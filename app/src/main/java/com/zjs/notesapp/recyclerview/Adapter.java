@@ -56,6 +56,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder>{
                     Intent intent = new Intent(context, EditNote.class);
                     intent.putExtra("filename", n.getFile());
                     intent.putExtra("fileContent", n.getContent());
+                    intent.putExtra("filePath", n.getFileObject().getAbsolutePath());
                     context.startActivity(intent);
                 } else {
                     //TODO changing directory logic

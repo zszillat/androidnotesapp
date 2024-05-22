@@ -16,17 +16,20 @@ public class Note {
 
     private String file;
     private String content;
+    private File fileObject;
     private boolean dir;
 
-    public Note(String file, String content) {
+    public Note(String file, String content, File fileObject) {
         this.file = file;
         this.content = content;
-        dir = false;
+        this.fileObject = fileObject;
+        this.dir = false;
     }
 
-    public Note(String file, String content, boolean dir) {
+    public Note(String file, String content, File fileObject, boolean dir) {
         this.file = file;
         this.content = content;
+        this.fileObject = fileObject;
         this.dir = dir;
     }
 
@@ -44,6 +47,14 @@ public class Note {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public File getFileObject() {
+        return fileObject;
+    }
+
+    public void setFileObject(File fileObject) {
+        this.fileObject = fileObject;
     }
 
     public boolean isDir() {
@@ -116,13 +127,16 @@ public class Note {
                         e.printStackTrace();
                     }
 
-                    notes.add(new Note(filename, contents.toString(), file.isDirectory()));
-
+                    notes.add(new Note(filename, contents.toString(), file ,file.isDirectory()));
                 }
             }
         }
 
         return notes;
+    }
+
+    public void deleteMyself() {
+        boolean b = this.fileObject.delete();
     }
 
 }
