@@ -5,49 +5,55 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditNote">
+    android:background="#E5E5E5"
+    tools:context=".EditNote"
+    android:fitsSystemWindows="true"
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/textViewFileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="File Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="5dp"
-        android:textSize="20dp"/>
+        android:text="File Name"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textViewSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewSave"
-        android:text="SAVE"
-        android:textColor="@color/blue"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
+        android:text="SAVE"
+        android:textColor="@color/blue"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/editTextFileName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#EEEEEE"
+        android:textSize="25dp"
         android:hint="Filename"
-        android:id="@+id/editTextFileName"
-        app:layout_constraintTop_toBottomOf="@id/textViewFileName"/>
+        app:layout_constraintTop_toBottomOf="@id/textViewFileName" />
 
     <EditText
         android:id="@+id/editTextNote"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="top|start"
+        android:background="@android:color/transparent"
         android:hint="Type your note here..."
         android:inputType="textMultiLine"
-        android:maxLines="10"
+        android:maxLines="100"
         android:minLines="5"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextFileName"/>
+        app:layout_constraintTop_toBottomOf="@id/editTextFileName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
