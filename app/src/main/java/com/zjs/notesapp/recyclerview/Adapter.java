@@ -48,6 +48,22 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder>{
 
         holder.filename.setText(notes.get(position).getFile());
 
+        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Delete the file and remove the note from the list
+                Note n = notes.get(position);
+                if(n.getFileObject().delete()) {
+                    notes.remove(position);
+                    // Notify the adapter of the item removal
+                    notifyItemRemoved(position);
+                    // Call this method to update the view for the remaining items
+                    notifyItemRangeChanged(position, notes.size());
+                }
+            }
+        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
