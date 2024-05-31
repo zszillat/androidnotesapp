@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">notesapp</string>
     <string name="sample_note_name">Sample Note Name</string>
+    <string name="save">Save</string>
+    <string name="filename">Filename</string>
+    <string name="note_hint">Type your note here...</string>
 </resources>
