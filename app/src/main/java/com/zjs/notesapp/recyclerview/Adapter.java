@@ -1,17 +1,24 @@
 package com.zjs.notesapp.recyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zjs.notesapp.EditNote;
+import com.zjs.notesapp.MainActivity;
 import com.zjs.notesapp.R;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
@@ -42,14 +49,24 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         holder.imageButtonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Delete Logic
+                f.delete();
+                List<File> fileList = new ArrayList<>(Arrays.asList(files));
+                fileList.remove(f);
+                files = fileList.toArray(new File[0]);
+
+                notifyItemRemoved(position);
+                // Call this method to update the view for the remaining items
+                notifyItemRangeChanged(position, files.length);
             }
         });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Item View Click Logic
+                Intent intent = new Intent(context, EditNote.class);
+                intent.putExtra("filename", f.getName());
+                intent.putExtra("fileContent", MainActivity.readFileAsString(f));
+                context.startActivity(intent);
             }
         });
     }
