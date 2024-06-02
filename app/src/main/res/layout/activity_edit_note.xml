@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".EditNote">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +25,8 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/text"/>
 
         <EditText
             android:id="@+id/editTextFileName"
@@ -32,9 +34,10 @@
             android:layout_marginEnd="15dp"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:hint="@string/filename"
             android:textSize="25sp"
+            android:maxLength="16"
             app:layout_constraintEnd_toStartOf="@+id/textViewSave"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,13 +50,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="top|start"
-        android:textColor="@color/black"
+        android:textColor="@color/text"
         android:background="@android:color/transparent"
         android:hint="@string/note_hint"
         android:inputType="textMultiLine"
         android:maxLines="100"
         android:minLines="5"
         android:scrollbars="vertical"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topPart"/>
 

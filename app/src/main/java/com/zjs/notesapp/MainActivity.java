@@ -44,21 +44,21 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = this.findViewById(R.id.recyclerViewFiles);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        Adapter adapter = new Adapter(this, getFiles());
+        Adapter adapter = new Adapter(this, getFiles(this));
         recyclerView.setAdapter(adapter);
 
-        for (File f : getFiles()) {
+        for (File f : getFiles(this)) {
             System.out.println(f.getName());
         }
 
     }
 
-    public File[] getFiles() {
+    public static File[] getFiles(Context context) {
         String directoryName = "notes";
         File[] filesList = null;
 
         // Getting the internal storage directory
-        File internalStorageDir = getFilesDir();
+        File internalStorageDir = context.getFilesDir();
         File notesDir = new File(internalStorageDir, directoryName);
 
         // Check if the directory exists

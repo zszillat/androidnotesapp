@@ -24,10 +24,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
     File[] files;
     Context context;
-    private AdapterView.OnItemClickListener listener;
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener listener) {
-        this.listener = listener;
     }
 
     public Adapter(Context context, File[] files) {
